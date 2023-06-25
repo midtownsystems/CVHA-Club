@@ -71,76 +71,79 @@ struct HelpResultView: View {
     var choice: String
     
     var body: some View {
-        ScrollView{
-            VStack(alignment: .leading){
+        ScrollView {
+            VStack(alignment: .leading) {
+                Text("Markdown Examples")
                 Text("""
-                    Here are all the examples of a Markdown Post with examples of the various types of markup available.
-                    ---
-                    layout: post.njk
-                    title: Example Post with Content Types of Bulma CSS
-                    tags: ['Temporary', 'Example']
-                    description: Post with a selection of styles and options shown in Markdown
-                    featuredImage: /_images/cvha-badge-default.png
-                    date: 2023-04-24
-                    ---
+                    
+Here are all the examples of a Markdown Post with examples of the various types of markup available.
+---
+layout: post.njk
+title: Example Post with Content Types of Bulma CSS
+tags: ['Temporary', 'Example']
+description: Post with a selection of styles and options shown in Markdown
+featuredImage: /_images/cvha-badge-default.png
+date: 2023-04-24
+---
 
-                    # Title H1
-                    ## Title H2
-                    ### Title H3
-                    #### Title H4
-                    ##### Title H5
-                    ###### Title H6
+# Title H1
+## Title H2
+### Title H3
+#### Title H4
+##### Title H5
+###### Title H6
 
-                    ## Paragraphs
+## Paragraphs
 
-                    Note: Bulma CSS is the main formatting engine for the site
+Note: Bulma CSS is the main formatting engine for the site
 
-                    Etiam ut risus sagittis, posuere mi at, congue dui. Sed in turpis ut felis bibendum blandit non sit amet ipsum. Etiam mattis metus sed felis cursus ultricies. Donec varius lectus maximus orci mattis sagittis.
+Etiam ut risus sagittis, posuere mi at, congue dui. Sed in turpis ut felis bibendum blandit non sit amet ipsum. Etiam mattis metus sed felis cursus ultricies. Donec varius lectus maximus orci mattis sagittis.
 
-                    Donec quis turpis eu justo suscipit eleifend in at mi. Nulla at lectus molestie, blandit elit eu, eleifend sem. Nunc suscipit tincidunt consectetur.
+Donec quis turpis eu justo suscipit eleifend in at mi. Nulla at lectus molestie, blandit elit eu, eleifend sem. Nunc suscipit tincidunt consectetur.
 
-                    ## Bold, cursive and link
-                    \\*\\*Bold\\*\\*, \\_cursive\\_ and \\[link](https://cvha.club/)
+## Bold, cursive and link
+\\*\\*Bold\\*\\*, \\_cursive\\_ and \\[link](https://cvha.club/)
 
-                    ## Lists
+## Lists
 
-                    - Donec quis turpis eu justo suscipit eleifend in at mi.
-                      - Nulla at lectus molestie, blandit elit eu, eleifend sem.
-                      - Nunc suscipit tincidunt consectetur.
-                    - Integer et neque in purus pulvinar consequat vel quis arcu.
-                    - Morbi porttitor blandit justo quis commodo.
+- Donec quis turpis eu justo suscipit eleifend in at mi.
+  - Nulla at lectus molestie, blandit elit eu, eleifend sem.
+  - Nunc suscipit tincidunt consectetur.
+- Integer et neque in purus pulvinar consequat vel quis arcu.
+- Morbi porttitor blandit justo quis commodo.
 
-                    1. Element 1
-                    2. Element 2
-                    3. Element 3
-                    4. Element 4
+1. Element 1
+2. Element 2
+3. Element 3
+4. Element 4
 
-                    ## Images
-                    ![imagen](/_images/ClydeValleyHorseArchersMain.png)
+## Images
+![imagen](/_images/ClydeValleyHorseArchersMain.png)
 
 
-                    ## Table
+## Table
 
-                    | Item         | Price     | # In stock |
-                    |--------------|-----------|------------|
-                    | Juicy Apples | 1.99      | *7*        |
-                    | Bananas      | **1.89**  | 5234       |
+| Item         | Price     | # In stock |
+|--------------|-----------|------------|
+| Juicy Apples | 1.99      | 7          |
+| Bananas      | 1.89      | 5234       |
 
-                    ## Quotes
+## Quotes
 
-                    > Donec quis turpis eu justo suscipit eleifend in at mi. Nulla at lectus molestie, blandit elit eu, eleifend sem. Nunc suscipit tincidunt consectetur.
+> Donec quis turpis eu justo suscipit eleifend in at mi. Nulla at lectus molestie, blandit elit eu, eleifend sem. Nunc suscipit tincidunt consectetur.
 
-                    ## Code
+## Code
 
-                    `console.log('Hello World')`
+`console.log('Hello World')`
 
-                    ```
-                    // tag <pre>
-                    console.log('Hello World')
-                    ```
+```
+// tag <pre>
+console.log('Hello World')
+```
 
                     """)
                     .monospaced()
+                    .font(.system(size: 12))
             }
         }
     }
@@ -225,7 +228,8 @@ struct ComposeFormView: View {
                     TextField("Date", text: $postDate)
                 }
                 Section {
-                    TextField("Post Body", text: $postBody)
+                    TextField("Post Body", text: $postBody, axis: .vertical)
+                        .lineLimit(10...25)
                         
                 }
             }

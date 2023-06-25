@@ -13,6 +13,8 @@ struct WebResultView: View {
     
     var body: some View {
         Text("Placeholder: Selection is \(choice)")
+            .navigationTitle("\(choice)")
+            .navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -28,19 +30,21 @@ struct ContentView: View {
                     Text("Website")
                         .navigationTitle("Clyde Valley Horse Archers Club")
                 }
-                NavigationLink(destination: ComposeFormView(choice: "Compose Post")){
+                NavigationLink(destination: ComposeFormView(choice: "Write a Post")){
                     Image(systemName: "square.and.pencil")
                         .imageScale(.large)
-                    Text("Compose Form")
-                        .navigationTitle("Compose")
-                        .navigationBarTitleDisplayMode(.inline)
+                    Text("Write a Post")
+
+                }
+                NavigationLink(destination: WebResultView(choice: "Upload  Picture")){
+                    Image(systemName: "camera")
+                        .imageScale(.large)
+                    Text("Upload Picture")
                 }
                 NavigationLink(destination: WebResultView(choice: "Document Editor")){
                     Image(systemName: "doc.text")
                         .imageScale(.large)
                     Text("Document Editor")
-                        .navigationTitle("Document Editor")
-                        .navigationBarTitleDisplayMode(.inline)
                 }
                 NavigationLink(destination: HelpResultView(choice: "Markdown Help")){
                     Image(systemName: "questionmark")
@@ -66,89 +70,6 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
-
-struct HelpResultView: View {
-    var choice: String
-    
-    var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-                Text("Markdown Examples")
-                Text("""
-                    
-Here are all the examples of a Markdown Post with examples of the various types of markup available.
----
-layout: post.njk
-title: Example Post with Content Types of Bulma CSS
-tags: ['Temporary', 'Example']
-description: Post with a selection of styles and options shown in Markdown
-featuredImage: /_images/cvha-badge-default.png
-date: 2023-04-24
----
-
-# Title H1
-## Title H2
-### Title H3
-#### Title H4
-##### Title H5
-###### Title H6
-
-## Paragraphs
-
-Note: Bulma CSS is the main formatting engine for the site
-
-Etiam ut risus sagittis, posuere mi at, congue dui. Sed in turpis ut felis bibendum blandit non sit amet ipsum. Etiam mattis metus sed felis cursus ultricies. Donec varius lectus maximus orci mattis sagittis.
-
-Donec quis turpis eu justo suscipit eleifend in at mi. Nulla at lectus molestie, blandit elit eu, eleifend sem. Nunc suscipit tincidunt consectetur.
-
-## Bold, cursive and link
-\\*\\*Bold\\*\\*, \\_cursive\\_ and \\[link](https://cvha.club/)
-
-## Lists
-
-- Donec quis turpis eu justo suscipit eleifend in at mi.
-  - Nulla at lectus molestie, blandit elit eu, eleifend sem.
-  - Nunc suscipit tincidunt consectetur.
-- Integer et neque in purus pulvinar consequat vel quis arcu.
-- Morbi porttitor blandit justo quis commodo.
-
-1. Element 1
-2. Element 2
-3. Element 3
-4. Element 4
-
-## Images
-![imagen](/_images/ClydeValleyHorseArchersMain.png)
-
-
-## Table
-
-| Item         | Price     | # In stock |
-|--------------|-----------|------------|
-| Juicy Apples | 1.99      | 7          |
-| Bananas      | 1.89      | 5234       |
-
-## Quotes
-
-> Donec quis turpis eu justo suscipit eleifend in at mi. Nulla at lectus molestie, blandit elit eu, eleifend sem. Nunc suscipit tincidunt consectetur.
-
-## Code
-
-`console.log('Hello World')`
-
-```
-// tag <pre>
-console.log('Hello World')
-```
-
-                    """)
-                    .monospaced()
-                    .font(.system(size: 12))
-            }
-        }
-    }
-}
-
 
 struct WebSiteView: UIViewRepresentable {
 
@@ -207,19 +128,20 @@ struct ComposeFormView: View {
     @State private var featuredImage = "/_images/cvha-badge-default.png"
     @State private var postDate = "2023-06-23"
     @State private var postBody = ""
-
-    
     
     var body: some View {
         NavigationView {
             Form {
                 Section{
-                    Picker("Tag", selection: $selectedPost) {
+                    Picker("Post Type", selection: $selectedPost) {
                         Text("Post").tag(TagType.post)
                         Text("Results").tag(TagType.results)
                         Text("About").tag(TagType.about)
                         Text("News").tag(TagType.news)
                     }
+                    .pickerStyle(.segmented)
+                } header: {
+                    Text("Type of post")
                 }
                 Section {
                     TextField("Title", text: $title)
@@ -232,6 +154,8 @@ struct ComposeFormView: View {
                         .lineLimit(10...25)
                         
                 }
+                .navigationTitle("Write a Post (does not save)")
+                .navigationBarTitleDisplayMode(.inline)
             }
         }
     }

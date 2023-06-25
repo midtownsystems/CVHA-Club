@@ -7,6 +7,7 @@
 
 import SwiftUI
 import WebKit
+import UniformTypeIdentifiers
 
 struct WebResultView: View {
     var choice: String
@@ -18,7 +19,36 @@ struct WebResultView: View {
     }
 }
 
+struct TextEditView: View {
+    @AppStorage("longPost2") private var notes =
+"""
+
+---
+layout: post.njk
+title: Your Post Title
+tags: ['Post']
+description: Edit this to give a post description
+featuredImage: /_images/cvha-badge-default.png
+date: 2023-07-24
+---
+
+# Title H1
+
+"""
+
+    
+    var body: some View {
+        NavigationView {
+            TextEditor(text: $notes)
+                .navigationTitle("Post")
+//                .navigationBarTitleDisplayMode(.inline)
+                .padding()
+        }
+    }
+}
+
 struct ContentView: View {
+    
     var body: some View {
         NavigationView {
             VStack(spacing: 60) {
@@ -29,29 +59,28 @@ struct ContentView: View {
                         .imageScale(.large)
                     Text("Website")
                         .navigationTitle("Clyde Valley Horse Archers Club")
+                        .navigationBarTitleDisplayMode(.inline)
                 }
-                NavigationLink(destination: ComposeFormView(choice: "Write a Post")){
+                NavigationLink(destination: ComposeFormView(choice: "Quick Post")){
                     Image(systemName: "square.and.pencil")
                         .imageScale(.large)
-                    Text("Write a Post")
-
+                    Text("Quick Post")
+                        .navigationTitle("Home")
                 }
-                NavigationLink(destination: WebResultView(choice: "Upload  Picture")){
+                NavigationLink(destination: TextEditView()){
+                    Image(systemName: "pencil")
+                        .imageScale(.large)
+                    Text("Longform Post")
+                }
+                NavigationLink(destination: WebResultView(choice: "Upload Picture")){
                     Image(systemName: "camera")
                         .imageScale(.large)
                     Text("Upload Picture")
-                }
-                NavigationLink(destination: WebResultView(choice: "Document Editor")){
-                    Image(systemName: "doc.text")
-                        .imageScale(.large)
-                    Text("Document Editor")
                 }
                 NavigationLink(destination: HelpResultView(choice: "Markdown Help")){
                     Image(systemName: "questionmark")
                         .imageScale(.large)
                     Text("Help Page")
-                        .navigationTitle("Markdown Help")
-                        .navigationBarTitleDisplayMode(.inline)
                 }
                 NavigationLink(destination: MerchSiteView()){
                     Image(systemName: "cart.fill")
@@ -154,7 +183,7 @@ struct ComposeFormView: View {
                         .lineLimit(10...25)
                         
                 }
-                .navigationTitle("Write a Post (does not save)")
+                .navigationTitle("Write a Post (does not save yet...)")
                 .navigationBarTitleDisplayMode(.inline)
             }
         }

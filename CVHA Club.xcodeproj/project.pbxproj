@@ -12,7 +12,8 @@
 		22B0F0322A46FBCD005E4D99 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22B0F0312A46FBCD005E4D99 /* Preview Assets.xcassets */; };
 		22B0F0392A47016F005E4D99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22B0F0382A47016F005E4D99 /* Assets.xcassets */; };
 		22D37C3A2A4881EC000FB3D4 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D37C392A4881EC000FB3D4 /* HelpView.swift */; };
-		22D37C3C2A48857D000FB3D4 /* CVHA_EditorDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D37C3B2A48857D000FB3D4 /* CVHA_EditorDocument.swift */; };
+		22D37C432A48A907000FB3D4 /* CVHAModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22D37C412A48A907000FB3D4 /* CVHAModel.xcdatamodeld */; };
+		22D37C452A48A98E000FB3D4 /* CVHAController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D37C442A48A98E000FB3D4 /* CVHAController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +24,8 @@
 		22B0F0312A46FBCD005E4D99 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		22B0F0382A47016F005E4D99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22D37C392A4881EC000FB3D4 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
-		22D37C3B2A48857D000FB3D4 /* CVHA_EditorDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVHA_EditorDocument.swift; sourceTree = "<group>"; };
+		22D37C422A48A907000FB3D4 /* CVHAModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CVHAModel.xcdatamodel; sourceTree = "<group>"; };
+		22D37C442A48A98E000FB3D4 /* CVHAController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVHAController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +60,9 @@
 			children = (
 				22B0F0292A46FBCB005E4D99 /* CVHA_ClubApp.swift */,
 				22B0F02B2A46FBCB005E4D99 /* ContentView.swift */,
+				22D37C412A48A907000FB3D4 /* CVHAModel.xcdatamodeld */,
+				22D37C442A48A98E000FB3D4 /* CVHAController.swift */,
 				22D37C392A4881EC000FB3D4 /* HelpView.swift */,
-				22D37C3B2A48857D000FB3D4 /* CVHA_EditorDocument.swift */,
 				22B0F02F2A46FBCD005E4D99 /* CVHA_Club.entitlements */,
 				22B0F0382A47016F005E4D99 /* Assets.xcassets */,
 				22B0F0302A46FBCD005E4D99 /* Preview Content */,
@@ -146,9 +149,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				22B0F02C2A46FBCB005E4D99 /* ContentView.swift in Sources */,
+				22D37C432A48A907000FB3D4 /* CVHAModel.xcdatamodeld in Sources */,
 				22D37C3A2A4881EC000FB3D4 /* HelpView.swift in Sources */,
 				22B0F02A2A46FBCB005E4D99 /* CVHA_ClubApp.swift in Sources */,
-				22D37C3C2A48857D000FB3D4 /* CVHA_EditorDocument.swift in Sources */,
+				22D37C452A48A98E000FB3D4 /* CVHAController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +366,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		22D37C412A48A907000FB3D4 /* CVHAModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				22D37C422A48A907000FB3D4 /* CVHAModel.xcdatamodel */,
+			);
+			currentVersion = 22D37C422A48A907000FB3D4 /* CVHAModel.xcdatamodel */;
+			path = CVHAModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 22B0F01E2A46FBCB005E4D99 /* Project object */;
 }
